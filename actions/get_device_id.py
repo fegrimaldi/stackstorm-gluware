@@ -12,8 +12,8 @@ class GetGluDeviceId(action.BaseAction):
                 "orgId": self.org_id,
                 "name": parameters["device_name"],
             },
+            json=None,
             headers=None,
-            payload=None,
             auth=self.glu_auth,
         )
         if response_raw is not None:

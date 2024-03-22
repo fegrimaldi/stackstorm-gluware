@@ -1,7 +1,7 @@
 ---
 name: response
 pack: gluware
-description: Runs a [g]luware workglow.
+description: Runs a [g]luware workflow.
 runner_type: orquesta
 entry_point: workflows/response.yaml
 enabled: true
