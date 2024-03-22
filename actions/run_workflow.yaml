@@ -1,0 +1,12 @@
+---
+name: run_workflow
+pack: silverwolf
+description: Runs a Gluware Workflow
+runner_type: "python-script"
+entry_point: run_workflow.py
+enabled: true
+parameters:
+  device_id:
+    required: true
+    type: string
+    default: ""
