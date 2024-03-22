@@ -17,12 +17,12 @@ output:
 
 tasks:
   get:
-    action: silverwolf.get_device_id device_name=<% ctx().device_name %>
+    action: gluware.get_device_id device_name=<% ctx().device_name %>
     next:
       - when: <% succeeded() %>
         publish: device_id=<% result().result %>
   run:
-    action: silverwolf.run_workflow device_id=<% ctx().device_id %>
+    action: gluware.run_workflow device_id=<% ctx().device_id %>
     next:
       - when: <% succeeded() %>
         publish: result=<% result().result %>

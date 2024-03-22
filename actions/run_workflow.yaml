@@ -1,6 +1,6 @@
 ---
 name: run_workflow
-pack: silverwolf
+pack: gluware
 description: Runs a Gluware Workflow
 runner_type: "python-script"
 entry_point: run_workflow.py
