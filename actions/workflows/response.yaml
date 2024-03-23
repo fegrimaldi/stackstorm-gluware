@@ -6,6 +6,7 @@ input:
   - device_name
 
 vars:
+  - device_name: null
   - device_id: null
   - wf_exec_status: null
 
