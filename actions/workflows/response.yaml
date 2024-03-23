@@ -6,13 +6,11 @@ input:
   - device_name
 
 vars:
-  - device_name: null
   - device_id: null
   - wf_exec_status: null
 
 
 output:
-  - device_name: <% ctx().device_name %>
   - device_id: <% ctx().device_id %>
   - wf_exec_status: <% ctx().wf_exec_status %>
 
