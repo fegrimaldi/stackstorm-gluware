@@ -22,9 +22,9 @@ tasks:
       - when: <% succeeded() %>
         publish: device_id=<% result().result %>
         do: task2
-    task2:
-      action: gluware.run_workflow device_id=<% ctx().device_id %>
-      next:
-        - when: <% succeeded() %>
-          publish: result=<% result().result %>
+  task2:
+    action: gluware.run_workflow device_id=<% ctx().device_id %>
+    next:
+      - when: <% succeeded() %>
+        publish: result=<% result().result %>
      
