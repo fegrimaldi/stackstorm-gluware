@@ -7,12 +7,12 @@ input:
 
 vars:
   - device_id: null
-  - result: null
+  # - result: null
 
 
 output:
   - device_id: <% ctx().device_id %>
-  - result: <% ctx().result %>
+  # - result: <% ctx().result %>
 
 
 tasks:
@@ -21,9 +21,9 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish: device_id=<% result().result %>
-  run:
-    action: gluware.run_workflow device_id=<% ctx().device_id %>
-    next:
-      - when: <% succeeded() %>
-        publish: result=<% result().result %>
+  # run:
+  #   action: gluware.run_workflow device_id=<% ctx().device_id %>
+  #   next:
+  #     - when: <% succeeded() %>
+  #       publish: result=<% result().result %>
      
