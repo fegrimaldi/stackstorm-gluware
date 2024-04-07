@@ -154,6 +154,6 @@ class WebMethod:
             sys.exit(1)
 
         self.logger.info(
-            f"WebMethod: {method}", extra={"msg": "completed successfully"}
+            f"WebMethod: {method}", extra={"msg": "Success"}
         )
         return response
