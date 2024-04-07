@@ -12,7 +12,6 @@ vars:
 
 
 output:
-  - device_id: <% ctx().device_id %>
   - wf_exec_status: <% ctx().wf_exec_status %>
 
 
