@@ -94,7 +94,6 @@ from urllib3.exceptions import InsecureRequestWarning
 from st2common import log as logging
 
 
-
 class WebMethod:
 
     def __init__(self, verify=True):
@@ -154,5 +153,7 @@ class WebMethod:
             self.logger.error(f"WebMethod: {method}", extra={"msg": err})
             sys.exit(1)
 
-        self.logger.info(f"WebMethod: {method}" , extra={"msg": "completed successfully"})
+        self.logger.info(
+            f"WebMethod: {method}", extra={"msg": "completed successfully"}
+        )
         return response

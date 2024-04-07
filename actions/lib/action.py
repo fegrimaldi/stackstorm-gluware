@@ -32,7 +32,6 @@ Author:
 
 """
 
-
 from st2common.runners.base_action import Action
 from st2common import log as logging
 
@@ -46,4 +45,3 @@ class BaseAction(Action):
         self.org_id = self.config["glu_org_id"]
 
         self.logger = logging.getLogger(__name__)
-

@@ -40,7 +40,6 @@ Author:
 
 """
 
-
 import sys
 from lib import action
 from lib.webmethod import WebMethod
@@ -62,8 +61,13 @@ class RunGluWorklflow(action.BaseAction):
             auth=self.glu_auth,
         )
         if response is not None:
-            self.logger.info("RunGluWorkFlow", extra={"msg": f"WebMethod's call response: {response.status_code}"})
+            self.logger.info(
+                "RunGluWorkFlow",
+                extra={"msg": f"WebMethod's call response: {response.status_code}"},
+            )
             return response.status_code
         else:
-            self.logger.error("RunGluWorkFlow", extra={"msg": "WebMethod's call response: None"})
+            self.logger.error(
+                "RunGluWorkFlow", extra={"msg": "WebMethod's call response: None"}
+            )
             sys.exit(1)
