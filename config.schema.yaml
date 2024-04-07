@@ -8,7 +8,7 @@ glu_password:
   secret: true
   required: true
 glu_base_url:
-  description: "Gluware Base url (https://glups.gluware.lab)"
+  description: "Gluware Base url (https://glups01.gluware.lab)"
   type: "string"
   secret: false
   required: true
