@@ -1,5 +1,5 @@
 ---
-name: response
+name: get_nsa
 pack: gluware
 description: Runs a [g]luware network state assessment workflow.
 runner_type: orquesta
