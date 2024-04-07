@@ -1,7 +1,7 @@
 ---
 name: get_device_id
 pack: gluware
-description: Gets the [g]luware device's ID.
+description: Gets the [g]luware device's ID given it's hostname.
 runner_type: "python-script"
 entry_point: get_device_id.py
 enabled: true
