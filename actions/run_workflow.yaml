@@ -6,6 +6,10 @@ runner_type: "python-script"
 entry_point: run_workflow.py
 enabled: true
 parameters:
+  workflow_id:
+    required: true
+    type: string
+    default: ""
   device_id:
     required: true
     type: string

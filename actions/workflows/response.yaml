@@ -6,6 +6,7 @@ input:
   - device_name
 
 vars:
+  - workflow_id: "af06b8d9-4110-4f45-8149-a53950764913"
   - device_id: null
   - wf_exec_status: null
 
@@ -23,7 +24,7 @@ tasks:
         publish: device_id=<% result().result %>
         do: task2
   task2:
-    action: gluware.run_workflow device_id=<% ctx().device_id %>
+    action: gluware.run_workflow device_id=<% ctx().device_id %> workflow_id=<% ctx().workflow_id %>
     next:
       - when: <% succeeded() %>
         publish: wf_exec_status=<% result().result %>
