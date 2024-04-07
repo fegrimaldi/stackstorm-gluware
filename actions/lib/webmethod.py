@@ -124,7 +124,7 @@ class WebMethod:
             print(
                 "Invalid HTTP method. Allowed methods are GET, POST, PATCH, PUT, DELETE."
             )
-            self.logger.ERROR(f"Invalid HTTP method: {method}")
+            self.logger.error(f"Invalid HTTP method: {method}")
             sys.exit(1)
 
         try:
@@ -150,10 +150,10 @@ class WebMethod:
                 )
             response.raise_for_status()
         except (HTTPError, RequestException) as err:
-            self.logger.ERROR(f"WebMethod: {method}", extra={"msg": err})
+            self.logger.error(f"WebMethod: {method}", extra={"msg": err})
             sys.exit(1)
 
-        self.logger.INFO(
+        self.logger.info(
             f"WebMethod: {method}", extra={"msg": "Success"}
         )
         return response
