@@ -1,9 +1,9 @@
 ---
 name: response
 pack: gluware
-description: Runs a [g]luware workflow.
+description: Runs a [g]luware network state assessment workflow.
 runner_type: orquesta
-entry_point: workflows/response.yaml
+entry_point: workflows/get_nsa.yaml
 enabled: true
 parameters:
   device_name:
