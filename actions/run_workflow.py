@@ -42,10 +42,11 @@ from lib.webmethod import WebMethod
 
 class RunGluWorklflow(action.BaseAction):
     def run(self, **parameters):
+        workflow_id = parameters["workflow_id"]
         self.web_method = WebMethod(verify=False)
         response_raw = self.web_method.call(
             method="POST",
-            url=f"{self.glu_base_url}/api/workflows/{parameters["workflow_id"]}/run",
+            url=f"{self.glu_base_url}/api/workflows/{workflow_id}/run",
             json={
                 "orgId": self.org_id,
                 "deviceIds": [parameters["device_id"]],
