@@ -1,0 +1,7 @@
+---
+name: "get_device_id"
+pack: "gluware"
+action_ref: "gluware.get_device_id"
+description: "Gets the Gluware device id given a device name."
+formats:
+  - "get the device id of {{device_name}}"
