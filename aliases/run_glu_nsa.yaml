@@ -4,4 +4,4 @@ pack: "gluware"
 action_ref: "gluware.get_nsa"
 description: "Runs Gluware network state assessment on a network device (host)."
 formats:
-  - "get nsa for {{host}}"
+  - "get nsa for {{device_name}}"
