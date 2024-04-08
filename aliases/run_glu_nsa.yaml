@@ -1,0 +1,7 @@
+---
+name: "run_glu_nsa"
+pack: "gluware"
+action_ref: "gluware.get_nsa"
+description: "Runs Gluware network state assessment on a network device (host)."
+formats:
+  - "run nsa on {{host}}"
