@@ -12,7 +12,7 @@ formats:
       - "get device id of {{device_name}}"  
 ack:
   enabled: true
-  format: "Executing `{{ actionalias.ref }}`, your ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
+  format: "Executing `{{ actionalias.ref }}` on `{{device_name}}`. Your shortenend execution id is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
   append_url: true
 result:
   format: "Action completed! The [g]luware device ID is `{{ execution.result.result }}`"
