@@ -15,4 +15,4 @@ ack:
   format: "Executing `{{ actionalias.ref }}`, your ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
   append_url: true
 result:
-  format: "Action completed! The [g]luware device ID of `{{device_name}}` is `{{ execution.result }}`"
+  format: "Action completed! The [g]luware device ID is `{{ execution.result.result }}`"
