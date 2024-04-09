@@ -2,6 +2,13 @@
 name: "get_nsa"
 pack: "gluware"
 action_ref: "gluware.get_nsa"
-description: "Runs Gluware network state assessment on a network device (host)."
+description: "Runs [g]luware network state assessment on a network device (host)."
 formats:
-  - "get nsa for {{device_name}}"
+  - display: (run|execute) NSA on {{device_name}}
+    representation:
+    - (run|execute) NSA on {{device_name}}
+    - start NSA on {{device_name}}
+ack:
+  enabled: true
+  format: "Executing `{{ actionalias.ref }}`, your ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
+  append_url: true 

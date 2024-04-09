@@ -5,3 +5,6 @@ action_ref: "gluware.get_device_id"
 description: "Gets the Gluware device id given a device name."
 formats:
   - "get the device id of {{device_name}}"
+  - "get me the device id of {{device_name}}"  
+  - "device id of {{device_name}}"
+  - "get device id of {{device_name}}"  
