@@ -9,7 +9,7 @@ formats:
     - (exec|execute|start) NSA on {{device_name}}
 ack:
   enabled: true
-  format: "Executing `{{ actionalias.ref }}`, your ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
+  format: "Executing `{{ actionalias.ref }}`, your shortened execution ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
   append_url: true
 result:
-  format: "Action completed! The [g]luware server's response was code `{{ execution.result.result }}`."
+  format: "Action completed! The [g]luware server's response was code `{{ execution.output }}`."
