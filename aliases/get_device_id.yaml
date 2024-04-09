@@ -2,9 +2,17 @@
 name: "get_device_id"
 pack: "gluware"
 action_ref: "gluware.get_device_id"
-description: "Gets the Gluware device id given a device name."
+description: "Gets the [g]luware device id given a device name."
 formats:
-  - "get the device id of {{device_name}}"
-  - "get me the device id of {{device_name}}"  
-  - "device id of {{device_name}}"
-  - "get device id of {{device_name}}"  
+  - display: get the device id of {{device_name}}
+    representation:
+      - "get the device id of {{device_name}}"
+      - "get me the device id of {{device_name}}"  
+      - "device id of {{device_name}}"
+      - "get device id of {{device_name}}"  
+ack:
+  enabled: true
+  format: "Executing `{{ actionalias.ref }}`, your ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
+  append_url: true
+result:
+  format: "Action completed! The [g]luware device ID of `{{device_name}}` is `{{ execution.result }}`"
