@@ -23,7 +23,7 @@ class GetGluWorkflows(action.BaseAction):
             result = []
             workflows = response.json()
             for workflow in workflows:
-                result.push({
+                result.append({
                     "name": workflow["name"],
                     "id":  workflow["id"]
                 }) 
