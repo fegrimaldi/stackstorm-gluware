@@ -1,6 +1,6 @@
 version: 1.0
 
-description: Runs a Gluware workflow.
+description: Runs a Gluware workflow by device name.
 
 input:
   - device_name
