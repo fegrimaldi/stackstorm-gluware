@@ -15,8 +15,8 @@ result:
   format: |
     Here are the workflows:
     {% for wf in execution.result.result -%}
-      `name`: `wf.name`
-      `id`: `wf.id`
+    `name`: `{{wf.name}}`
+    `id`: `{{wf.id}}`
     {%+ endfor %}
 
   
