@@ -1,6 +1,15 @@
+
+
 import sys
 from lib import action
 from lib.webmethod import WebMethod
+
+from datetime import datetime
+
+def js_timestamp_to_datetime(timestamp):
+    seconds = timestamp / 1000
+    date_obj = datetime.fromtimestamp(seconds)
+    return date_obj.strftime("%Y-%m-%d %H:%M:%S")
 
 
 class GetGluWorkflows(action.BaseAction):
@@ -25,7 +34,9 @@ class GetGluWorkflows(action.BaseAction):
             for workflow in workflows:
                 result.append({
                     "name": workflow["name"],
-                    "id":  workflow["id"]
+                    "description": workflow["description"],
+                    "id":  workflow["id"],
+                    "lastRun": js_timestamp_to_datetime(workflow["lastRun"])
                 }) 
             self.logger.info(
                 "GetGluWorkflows", extra={"result": result}

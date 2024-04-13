@@ -17,7 +17,9 @@ result:
 
     {% for wf in execution.result.result -%}
     `name`: `{{wf.name}}`
+    `description`: `{{wf.description}}`
     `id`: `{{wf.id}}`
+    `last run`: `{{wf.lastRun}}`
 
     {%+ endfor %}
 
