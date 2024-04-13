@@ -16,10 +16,9 @@ result:
     Got it! Here are the Gluware API accessible workflows:
 
     {% for wf in execution.result.result -%}
-    `name`: `{{wf.name}}`
-    `description`: `{{wf.description}}`
-    `id`: `{{wf.id}}`
-    `last run`: `{{wf.lastRun}}`
+    `name`: `{{ wf.name }}`
+    `id`: `{{ wf.id }}`
+    `last run`: `{{ wf.lastRun }}`
 
     {%+ endfor %}
 

@@ -4,12 +4,15 @@ import sys
 from lib import action
 from lib.webmethod import WebMethod
 
-from datetime import datetime
+from datetime import datetime, timezone
 
-def js_timestamp_to_datetime(timestamp):
+
+def js_timestamp_to_utc_string(timestamp):
+    # Convert milliseconds to seconds
     seconds = timestamp / 1000
-    date_obj = datetime.fromtimestamp(seconds)
-    return date_obj.strftime("%Y-%m-%d %H:%M:%S")
+    date_obj = datetime.fromtimestamp(seconds, timezone.utc)
+    utc_string = date_obj.strftime('%Y-%m-%d %H:%M:%S UTC')
+    return utc_string
 
 
 class GetGluWorkflows(action.BaseAction):
@@ -34,9 +37,8 @@ class GetGluWorkflows(action.BaseAction):
             for workflow in workflows:
                 result.append({
                     "name": workflow["name"],
-                    "description": workflow["description"],
                     "id":  workflow["id"],
-                    "lastRun": js_timestamp_to_datetime(workflow["lastRun"])
+                    "lastRun": js_timestamp_to_utc_string(workflow["lastRun"])
                 }) 
             self.logger.info(
                 "GetGluWorkflows", extra={"result": result}
