@@ -1,9 +1,9 @@
 ---
-name: get_nsa
+name: run_wf_by_device_name
 pack: gluware
-description: Runs a [g]luware network state assessment workflow.
+description: Runs a [g]luware workflow by device name. 
 runner_type: orquesta
-entry_point: workflows/get_nsa.yaml
+entry_point: workflows/run_wf_by_device_name.yaml
 enabled: true
 parameters:
   device_name:
