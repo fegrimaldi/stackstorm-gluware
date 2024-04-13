@@ -10,3 +10,7 @@ parameters:
     required: true
     type: string
     default: ""
+  workflow_id:
+    required: true
+    type: string
+    default: ""

@@ -1,0 +1,7 @@
+---
+name: get_workflows
+pack: gluware
+description: Gets the name and id of all public Gluware Workflows.
+runner_type: "python-script"
+entry_point: get_workflows.py
+enabled: true

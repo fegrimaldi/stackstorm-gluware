@@ -1,19 +1,17 @@
-version: 1.0
+version: 1.1
 
 description: Runs a Gluware workflow.
 
 input:
   - device_name
+  - workflow_id
 
 vars:
-  - workflow_id: "af06b8d9-4110-4f45-8149-a53950764913"
   - device_id: null
   - wf_exec_status: null
 
-
 output:
   - wf_exec_status: <% ctx().wf_exec_status %>
-
 
 tasks:
   task1:
