@@ -4,19 +4,21 @@ pack: "gluware"
 action_ref: "gluware.get_workflows"
 description: "Gets the name and ID of all API accessible [g]luware workflows."
 formats:
-  - display: get gluware workflows
+  - display: get Gluware workflows
     representation:
-    - get gluware workflows
+    - get ([gG]luware) workflows
 ack:
   enabled: true
   format: "Executing `{{ actionalias.ref }}`, your shortened execution ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
   append_url: true
 result:
   format: |
-    Here are the workflows:
+    Got it! Here are the Gluware API accessible workflows:
+
     {% for wf in execution.result.result -%}
     `name`: `{{wf.name}}`
     `id`: `{{wf.id}}`
+
     {%+ endfor %}
 
   
