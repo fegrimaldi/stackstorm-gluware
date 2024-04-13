@@ -20,11 +20,17 @@ class GetGluWorkflows(action.BaseAction):
             auth=self.glu_auth,
         )
         if response is not None:
+            result = []
             workflows = response.json()
+            for workflow in workflows:
+                result.push({
+                    "name": workflow["name"],
+                    "id":  workflow["id"]
+                }) 
             self.logger.info(
-                "GetGluWorkflows", extra={}
+                "GetGluWorkflows", extra={"result": result}
             )
-            return workflows
+            return result
         else:
             self.logger.error(
                 "GetGluWorkflows", extra={"msg": "WebMethod's call response was `None`"}
