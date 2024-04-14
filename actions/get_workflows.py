@@ -15,7 +15,7 @@ Version:
     1.0
 
 Author: 
-    Fabricio E. Grimaldi
+    Fabricio Grimaldi
 """
 
 
