@@ -11,7 +11,7 @@ vars:
   - result_code: null
 
 output:
-  - wf_exec_status: <% ctx().wf_exec_status %>
+  - wf_exec_status: <% ctx().result_code %>
 
 tasks:
   task1:
