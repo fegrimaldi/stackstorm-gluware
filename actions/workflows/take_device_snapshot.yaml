@@ -1,0 +1,28 @@
+version: 1.0
+
+description: Takes a Gluware snapshot of a network device.
+
+input:
+  - device_name
+  - workflow_id
+
+vars:
+  - device_id: null
+  - result_code: null
+
+output:
+  - wf_exec_status: <% ctx().wf_exec_status %>
+
+tasks:
+  task1:
+    action: gluware.get_device_id device_name=<% ctx().device_name %>
+    next:
+      - when: <% succeeded() %>
+        publish: device_id=<% result().result %>
+        do: task2
+  task2:
+    action: core.http method="POST" url="https://glups01.gluware.lab/api/snapshots/capture" body="{"deviceIds":[<% ctx().device_id %>],"description":"Test from WF"}" username="admin" password="qwerty2020L"
+    next:
+      - when: <% succeeded() %>
+        publish: result_code=<% result().result %>
+     
