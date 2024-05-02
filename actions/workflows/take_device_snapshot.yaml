@@ -21,7 +21,7 @@ tasks:
         publish: device_id=<% result().result %>
         do: task2
   task2:
-    action: core.http method="POST" url="https://glups01.gluware.lab/api/snapshots/capture" body="{"deviceIds":[<% ctx().device_id %>],"description":"Test from WF"}" username="admin" password="qwerty2020L" verify_ssl_cert="False"
+    action: core.http method="POST" url="https://glups01.gluware.lab/api/snapshots/capture" body={"deviceIds":[<% ctx().device_id %>],"description":"Test from WF"} username="admin" password="qwerty2020L" verify_ssl_cert="False"
     next:
       - when: <% succeeded() %>
         publish: result_code=<% result().result %>
