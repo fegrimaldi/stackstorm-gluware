@@ -1,12 +1,12 @@
 ---
-name: "run_ntp_nsa"
+name: "run_routing_nsa"
 pack: "gluware"
 action_ref: "gluware.run_wf_by_device_name"
-description: "Runs [g]luware network state assessment on a network device (host)."
+description: "Runs [g]luware routing network state assessment on a network device (host)."
 formats:
-  - display: start NTP NSA on {{device_name}}
+  - display: start routing NSA on {{device_name}}
     representation:
-      - ([sS]tart) NTP NSA on {{device_name}} {{workflow_id="1eef4379-cdb0-4f0b-9d62-ab3476b8b58f"}}
+      - ([sS]tart) routing NSA on {{device_name}} {{workflow_id="efc394fe-a56f-4172-a180-d96091cdd9f5"}}
 ack:
   enabled: true
   format: "Executing `{{ actionalias.ref }}`, your shortened execution ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
