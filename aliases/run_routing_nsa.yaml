@@ -6,7 +6,7 @@ description: "Runs [g]luware routing network state assessment on a network devic
 formats:
   - display: start routing NSA on {{device_name}}
     representation:
-      - ([sS]tart) routing NSA on {{device_name}} {{workflow_id="efc394fe-a56f-4172-a180-d96091cdd9f5"}}
+      - ([sS]tart) routing NSA on {{device_name}} {{workflow_id="31859b26-8aff-4403-bbc6-8c23d7041782"}}
 ack:
   enabled: true
   format: "Executing `{{ actionalias.ref }}`, your shortened execution ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
