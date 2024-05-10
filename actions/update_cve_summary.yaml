@@ -1,0 +1,7 @@
+---
+name: update_cve_summary
+pack: gluware
+description: Updates the CVE Summary in Dashboards.
+runner_type: "python-script"
+entry_point: update_cve_summary.py
+enabled: true

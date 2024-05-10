@@ -138,11 +138,11 @@ class WebMethod:
                 )
             elif method == "PATCH":
                 response = requests.patch(
-                    url, json=json, headers=headers, auth=auth, verify=self.verify
+                    url, data=json, headers=headers, auth=auth, verify=self.verify
                 )
             elif method == "PUT":
                 response = requests.put(
-                    url, json=json, headers=headers, auth=auth, verify=self.verify
+                    url, data=json, headers=headers, auth=auth, verify=self.verify
                 )
             elif method == "DELETE":
                 response = requests.delete(
@@ -153,7 +153,5 @@ class WebMethod:
             self.logger.error(f"WebMethod: {method}", extra={"msg": err})
             sys.exit(1)
 
-        self.logger.info(
-            f"WebMethod: {method}", extra={"msg": "Success"}
-        )
+        self.logger.info(f"WebMethod: {method}", extra={"msg": "Success"})
         return response
