@@ -36,7 +36,7 @@ class UpdateCveSummary(action.BaseAction):
             json=None,
             headers=None,
             auth=self.glu_auth,
-        )
+        ).json()
 
         # * Loop Through all Devices
         for dev in devices:
@@ -55,7 +55,7 @@ class UpdateCveSummary(action.BaseAction):
                     json=None,
                     headers=None,
                     auth=self.glu_auth,
-                )
+                ).json
 
                 cve_payload = {"id": deviceId}
                 if "Medium Advisories" in device.keys():
