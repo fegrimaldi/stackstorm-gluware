@@ -55,7 +55,7 @@ class UpdateCveSummary(action.BaseAction):
                     json=None,
                     headers=None,
                     auth=self.glu_auth,
-                ).json
+                ).json()
 
                 cve_payload = {"id": deviceId}
                 if "Medium Advisories" in device.keys():
@@ -71,7 +71,7 @@ class UpdateCveSummary(action.BaseAction):
                     data=json.dumps(cve_payload),
                     headers=headers,
                     auth=self.glu_auth,
-                ).json
+                ).json()
 
                 if response is not None:
                     self.logger.info(
