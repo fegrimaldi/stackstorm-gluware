@@ -18,7 +18,6 @@ Author:
 """
 
 import sys
-import json
 from lib import action
 from lib.webmethod import WebMethod
 
@@ -71,7 +70,7 @@ class UpdateCveSummary(action.BaseAction):
                     json=cve_payload,
                     headers=headers,
                     auth=self.glu_auth,
-                )
+                ).json()
 
                 if response is not None:
                     self.logger.info(
@@ -80,10 +79,10 @@ class UpdateCveSummary(action.BaseAction):
                             "msg": f"WebMethod's call response: {response.status_code}"
                         },
                     )
-                    return response.status_code
+                    # return response.status_code
                 else:
                     self.logger.error(
                         "UpdateCveSummary",
                         extra={"msg": "WebMethod's call response: None"},
                     )
-                    sys.exit(1)
+                    # sys.exit(1)
