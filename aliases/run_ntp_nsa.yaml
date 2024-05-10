@@ -6,7 +6,7 @@ description: "Runs [g]luware network state assessment on a network device (host)
 formats:
   - display: start NTP NSA on {{device_name}}
     representation:
-      - ([sS]tart) NTP NSA on {{device_name}} {{workflow_id="c631dfe3-cd62-4dd3-9015-b2dcc6db2d02"}}
+      - ([sS]tart) NTP NSA on {{device_name}} {{workflow_id="1548ae0c-7932-42a6-a8f0-fd5f3dd783c9"}}
 ack:
   enabled: true
   format: "Executing `{{ actionalias.ref }}`, your shortened execution ID is `{{ execution.id[:2] }}..{{ execution.id[-2:] }}`"
