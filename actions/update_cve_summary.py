@@ -71,7 +71,8 @@ class UpdateCveSummary(action.BaseAction):
                     data=json.dumps(cve_payload),
                     headers=headers,
                     auth=self.glu_auth,
-                )
+                ).json
+
                 if response is not None:
                     self.logger.info(
                         "UpdateCveSummary",
