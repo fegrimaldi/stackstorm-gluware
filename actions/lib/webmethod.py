@@ -138,11 +138,11 @@ class WebMethod:
                 )
             elif method == "PATCH":
                 response = requests.patch(
-                    url, data=json, headers=headers, auth=auth, verify=self.verify
+                    url, json=json, headers=headers, auth=auth, verify=self.verify
                 )
             elif method == "PUT":
                 response = requests.put(
-                    url, data=json, headers=headers, auth=auth, verify=self.verify
+                    url, json=json, headers=headers, auth=auth, verify=self.verify
                 )
             elif method == "DELETE":
                 response = requests.delete(
