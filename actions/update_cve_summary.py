@@ -40,11 +40,11 @@ class UpdateCveSummary(action.BaseAction):
 
         # * Loop Through all Devices
         for dev in devices:
+            deviceId = dev["id"]
             if "discoveredSku" in dev.keys():
                 skuString = dev["discoveredSku"]
             else:
                 skuString = "undiscovered"
-                deviceId = dev["id"]
 
             if (dev["accessStatus"] != "UNKNOWN") & (skuString != "undiscovered"):
                 # * Get All Devices
