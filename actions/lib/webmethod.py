@@ -150,6 +150,7 @@ class WebMethod:
                 )
             response.raise_for_status()
         except (HTTPError, RequestException) as err:
+            print(err)
             self.logger.error(f"WebMethod: {method}", extra={"msg": err})
             sys.exit(1)
 
