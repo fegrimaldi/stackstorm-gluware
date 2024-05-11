@@ -18,6 +18,7 @@ Author:
 """
 
 import sys
+import json
 from lib import action
 from lib.webmethod import WebMethod
 
@@ -67,7 +68,7 @@ class UpdateCveSummary(action.BaseAction):
                 response = self.web_method.call(
                     method="PUT",
                     url=f"{self.glu_base_url}/api/devices/{deviceId}",
-                    json=cve_payload,
+                    json=json.dumps(cve_payload),
                     headers=headers,
                     auth=self.glu_auth,
                 )
