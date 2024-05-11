@@ -102,7 +102,7 @@ class WebMethod:
         self.verify = verify
         self.logger = logging.getLogger(__name__)
 
-    def call(self, method, url, params=None, json=None, headers=None, auth=None):
+    def call(self, method, url, params=None, json=None, data=None, headers=None, auth=None):
         """
         Calls the specified HTTP method (GET, POST, PATCH, etc.) using the requests library.
 
@@ -142,7 +142,7 @@ class WebMethod:
                 )
             elif method == "PUT":
                 response = requests.put(
-                    url, json=json, headers=headers, auth=auth, verify=self.verify
+                    url, data=data, headers=headers, auth=auth, verify=self.verify
                 )
             elif method == "DELETE":
                 response = requests.delete(
