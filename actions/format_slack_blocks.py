@@ -7,10 +7,8 @@ class FormatSlackBlocks(action.BaseAction):
         self.blocks = parameters["blocks"]
         blockJson = json.loads(self.blocks)
 
-        for key in blockJson.keys():
-            blocks = blockJson[key]
-            blockDump = json.dumps(blocks)
+        formatted_blocks = {}
+        for key, blocks in blockJson.items():
+            formatted_blocks[key] = json.dumps(blocks)
 
-        fBlocks = json.dumps(blockDump)
-    
-        return fBlocks[1:-1]
+        return formatted_blocks
