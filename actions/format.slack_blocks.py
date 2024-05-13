@@ -4,7 +4,7 @@ import json
 
 class GetBgpState(action.BaseAction):
     def run(self, **parameters):
-        self.blocks = parameters["block"]
+        self.blocks = parameters["blocks"]
 
         for key in self.blocks.keys():
             blocks = self.blocks[key]
