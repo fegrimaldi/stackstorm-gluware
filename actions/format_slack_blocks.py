@@ -3,7 +3,7 @@ import json
 
 class FormatSlackBlocks(action.BaseAction):
     def run(self, **parameters):
-        self.blocks = parameters["blocks"]
+        self.blocks = json.loads(parameters["blocks"])
 
         formatted_blocks = []
         for block in self.blocks:
