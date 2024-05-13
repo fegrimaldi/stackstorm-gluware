@@ -10,4 +10,4 @@ class GetBgpState(action.BaseAction):
             blocks = self.blocks[key]
             blockDump = json.dumps(blocks)
 
-        return json.dumps(blockDump)
+        return blockDump
