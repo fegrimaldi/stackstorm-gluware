@@ -10,4 +10,7 @@ class FormatSlackBlocks(action.BaseAction):
             blocks = self.blocks[key]
             formatted_blocks.append(blocks)
 
-        return formatted_blocks
+        # Joining the formatted blocks with commas
+        result = "[" + ",".join(json.dumps(block) for block in formatted_blocks) + "]"
+
+        return result
