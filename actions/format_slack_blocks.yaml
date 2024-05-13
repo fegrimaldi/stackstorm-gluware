@@ -6,7 +6,7 @@ enabled: true
 entry_point: "format_slack_blocks.py"
 parameters:
   blocks:
-    type: object
+    type: string
     description: "A valid Slack block."
     required: true
     position: 1
