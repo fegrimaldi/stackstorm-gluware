@@ -11,4 +11,4 @@ class FormatSlackBlocks(action.BaseAction):
             blocks = blockJson[key]
             blockDump = json.dumps(blocks)
 
-        return blockDump
+        return json.dumps(blockDump)
