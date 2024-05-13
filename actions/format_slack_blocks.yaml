@@ -1,0 +1,12 @@
+---
+name: "format_slack_blocks"
+runner_type: "python-script"
+description: "Formats a Slack block in order to post message"
+enabled: true
+entry_point: "format_slack_blocks.py"
+parameters:
+  blocks:
+    type: string
+    description: "A valid Slack block."
+    required: true
+    position: 1
