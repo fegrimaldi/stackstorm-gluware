@@ -1,0 +1,43 @@
+---
+version: 1.0
+
+description: Runs an OS Version compliance report workflow
+
+input:
+  - glu_base_url: string
+  - glu_username: string
+  - glu_password: string
+  - glu_org_id: string
+
+tasks:
+  get_url:
+    action: core.noop
+    input:
+      url: <% ctx(glu_base_url) %>
+      username: <% ctx(glu_username) %>
+      password: <% ctx(glu_password) %>
+      org_id: <% ctx(glu_org_id) %>
+    next:
+      - when: <% succeeded() %>
+        publish:
+          url: <% result().url %>
+          username: <% result().username %>
+          password: <% result().password %>
+          org_id: <% result().org_id %>
+        do: http_post
+
+  http_post:
+    action: core.http
+    input:
+      url: <% ctx().get_url.url %>/api/workflows/6f5ac16b-559e-48ed-afa5-98f8af53e3fc/run
+      method: POST
+      headers:
+        Content-Type: "application/json"
+      body:
+        orgId: <% ctx().get_url.org_id %>
+        inputParameters:
+          siteCodeName: "GA010"
+      auth:
+        username: <% ctx().get_url.username %>
+        password: <% ctx().get_url.password %>
+      verify_ssl_cert: false
