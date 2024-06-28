@@ -1,0 +1,7 @@
+---
+name: run_os_compliance_report
+pack: gluware
+description: Runs a [g]luware OS version non-compliance report. 
+runner_type: orquesta
+entry_point: workflows/run_os_compliance_report.yaml
+enabled: true
