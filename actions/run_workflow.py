@@ -60,14 +60,14 @@ class RunGluWorklflow(action.BaseAction):
         self.web_method = WebMethod(verify=False)
         response = self.web_method.call(
             method="POST",
-            url=f"{self.glu_base_url}/api/workflows/{workflow_id}/run",
+            url=f"{self.base_url}/api/workflows/{workflow_id}/run",
             json={
                 "orgId": self.org_id,
                 "deviceIds": parameters["device_ids"],
                 "inputParameters": parameters["input_params"],
             },
             headers=None,
-            auth=self.glu_auth,
+            auth=self.auth,
         )
         if response is not None:
             self.logger.info(

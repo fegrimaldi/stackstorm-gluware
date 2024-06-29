@@ -48,7 +48,7 @@ class GetGluWorkflows(action.BaseAction):
 
         response = self.web_method.call(
             method="GET",
-            url=f"{self.glu_base_url}/api/workflows",
+            url=f"{self.base_url}/api/workflows",
             params={
                 "orgId": self.org_id,
                 "workflowType": "PRODUCTION",
@@ -56,7 +56,7 @@ class GetGluWorkflows(action.BaseAction):
             },
             json=None,
             headers=None,
-            auth=self.glu_auth,
+            auth=self.auth,
         )
         if response is not None:
             result = []

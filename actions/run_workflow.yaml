@@ -1,7 +1,7 @@
 ---
 name: run_workflow
 pack: gluware
-description: Runs a [g]luware Workflow
+description: Runs a [g]luware Workflow.
 runner_type: "python-script"
 entry_point: run_workflow.py
 enabled: true

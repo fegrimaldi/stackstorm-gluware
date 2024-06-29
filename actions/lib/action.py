@@ -40,8 +40,8 @@ class BaseAction(Action):
     def __init__(self, config):
         super(BaseAction, self).__init__(config)
 
-        self.glu_auth = (self.config["glu_username"], self.config["glu_password"])
-        self.glu_base_url = self.config["glu_base_url"]
-        self.org_id = self.config["glu_org_id"]
+        self.auth = (self.config["username"], self.config["password"])
+        self.base_url = self.config["base_url"]
+        self.org_id = self.config["org_id"]
 
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger("Gluware")

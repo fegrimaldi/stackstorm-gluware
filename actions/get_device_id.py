@@ -53,14 +53,14 @@ class GetGluDeviceId(action.BaseAction):
 
         response = self.web_method.call(
             method="GET",
-            url=f"{self.glu_base_url}/api/devices",
+            url=f"{self.base_url}/api/devices",
             params={
                 "orgId": self.org_id,
                 "name": parameters["device_name"],
             },
             json=None,
             headers=None,
-            auth=self.glu_auth,
+            auth=self.auth,
         )
         if response is not None:
             devices = response.json()

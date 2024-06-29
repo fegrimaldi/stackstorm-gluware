@@ -1,18 +1,18 @@
-glu_username:
+username:
   description: "Gluware username."
   type: "string"
   required: true
-glu_password:
+password:
   description: "Gluware user password."
   type: "string"
   secret: true
   required: true
-glu_base_url:
+base_url:
   description: "Gluware Base url (https://glups01.gluware.lab)"
   type: "string"
   secret: false
   required: true
-glu_org_id:
+org_id:
   description: "Gluware Org ID"
   type: "string"
   secret: false
