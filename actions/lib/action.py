@@ -40,8 +40,20 @@ class BaseAction(Action):
     def __init__(self, config):
         super(BaseAction, self).__init__(config)
 
+        self.logger = self._get_logger()
         self.auth = (self.config["username"], self.config["password"])
         self.base_url = self.config["base_url"]
         self.org_id = self.config["org_id"]
 
-        self.logger = logging.getLogger("Gluware")
+
+    def _get_logger(self):
+        logger = logging.getLogger("Gluware")  # or use a specific logger name
+        logger.setLevel(logging.DEBUG)  # Adjust as per your needs
+        
+        # Define handlers and formatters if needed
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        
+        logger.addHandler(handler)
+        return logger
