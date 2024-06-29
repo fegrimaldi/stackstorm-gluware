@@ -1,4 +1,4 @@
-version: 1.1
+version: 1.0
 
 description: Runs a Gluware OS version compliance report for multiple sites.
 
