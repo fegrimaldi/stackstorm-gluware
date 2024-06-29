@@ -47,13 +47,5 @@ class BaseAction(Action):
 
 
     def _get_logger(self):
-        logger = logging.getLogger("Gluware")  # or use a specific logger name
-        logger.setLevel(logging.DEBUG)  # Adjust as per your needs
-        
-        # Define handlers and formatters if needed
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-        
-        logger.addHandler(handler)
+        logger = logging.getLogger(__name__)  # Using __name__ ensures the logger is named after the module
         return logger
