@@ -63,7 +63,7 @@ class RunGluWorklflow(action.BaseAction):
             url=f"{self.glu_base_url}/api/workflows/{workflow_id}/run",
             json={
                 "orgId": self.org_id,
-                "deviceIds": [parameters["device_id"]],
+                "deviceIds": parameters["device_ids"],
                 "inputParameters": parameters["input_params"],
             },
             headers=None,
