@@ -1,4 +1,4 @@
-version: 1.0
+version: 1.1
 
 description: Runs a Gluware OS version compliance report for multiple sites.
 
@@ -9,24 +9,25 @@ input:
 
 vars:
   - site_codes: ["GA010", "CA050"]
+  - workflow_id: "6f5ac16b-559e-48ed-afa5-98f8af53e3fc"
   - device_ids: []
 
 output:
   - wf_exec_status: <% ctx().wf_exec_status %>
 
-
 tasks:
   run_gluware_workflow:
-    action: gluware.run_workflow
     with:
       items: <% ctx().site_codes %>
       concurrency: 1
+    action: gluware.run_workflow
     input:
-      workflow_id: "6f5ac16b-559e-48ed-afa5-98f8af53e3fc"
+      workflow_id: <% ctx().workflow_id %>
       device_ids: <% ctx().device_ids %>
       input_params:
         siteCodeName: <% item() %>
     next:
       - when: <% succeeded() %>
-        publish: wf_exec_status=<% result().result %>
+        publish: 
+          - wf_exec_status: <% result().result %>
 

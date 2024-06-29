@@ -1,13 +1,15 @@
-version: 1.0
+version: 1.1
 
 description: Runs a [g]luware workflow by device name.
 
 input:
-  - device_name
-  - workflow_id
+  - device_name: string
+  - device_ids: array
+  - workflow_id: string
 
 vars:
   - device_id: null
+  - device_ids: []
   - wf_exec_status: null
 
 output:
@@ -15,14 +17,21 @@ output:
 
 tasks:
   task1:
-    action: gluware.get_device_id device_name=<% ctx().device_name %>
+    action: gluware.get_device_id
+    input:
+      device_name: <% ctx().device_name %>
     next:
       - when: <% succeeded() %>
-        publish: device_id=<% result().result %>
+        publish: 
+          - device_id: <% result().result %>
         do: task2
   task2:
-    action: gluware.run_workflow device_id=<% ctx().device_id %> workflow_id=<% ctx().workflow_id %>
+    action: gluware.run_workflow
+    input:
+      device_ids: [<% ctx().device_id %>]
+      workflow_id: <% ctx().workflow_id %>
     next:
       - when: <% succeeded() %>
-        publish: wf_exec_status=<% result().result %>
+        publish: 
+         - wf_exec_status: <% result().result %>
      
