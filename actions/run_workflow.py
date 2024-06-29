@@ -64,7 +64,7 @@ class RunGluWorklflow(action.BaseAction):
             json={
                 "orgId": self.org_id,
                 "deviceIds": [parameters["device_id"]],
-                "inputParameters": {},
+                "inputParameters": parameters["input_params"],
             },
             headers=None,
             auth=self.glu_auth,

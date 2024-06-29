@@ -10,34 +10,13 @@ input:
   - glu_org_id: string
 
 tasks:
-  get_url:
-    action: core.noop
-    input:
-      glu_base_url: <% ctx().glu_base_url %>
-      glu_username: <% ctx().glu_username %>
-      glu_password: <% ctx().glu_password %>
-      glu_org_id: <% ctx().glu_org_id %>
-    next:
-      - when: <% succeeded() %>
-        publish:
-          url: <% ctx().get_url.result.url %>
-          username: <% ctx().get_url.result.username %>
-          password: <% ctx().get_url.result.password %>
-          org_id: <% ctx().get_url.result.org_id %>
-        do: http_post
-
   http_post:
     action: core.http
     input:
-      url: <% ctx().get_url.url %>/api/workflows/6f5ac16b-559e-48ed-afa5-98f8af53e3fc/run
+      url: <% ctx().glu_base_url %>/api/workflows/6f5ac16b-559e-48ed-afa5-98f8af53e3fc/run
       method: POST
       headers:
         Content-Type: "application/json"
-      body:
-        orgId: <% ctx().get_url.org_id %>
-        inputParameters:
-          siteCodeName: "GA010"
-      auth:
-        username: <% ctx().get_url.username %>
-        password: <% ctx().get_url.password %>
+      body: '{"orgId":"<% ctx().glu_org_id %>,"inputParameters":{"siteCodeName":"GA010"}}'
+      auth: '{"username": <% ctx().glu_username %>,"password": <% ctx().glu_password %>}'
       verify_ssl_cert: false

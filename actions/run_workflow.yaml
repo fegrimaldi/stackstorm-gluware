@@ -14,3 +14,7 @@ parameters:
     required: true
     type: string
     default: ""
+  input_params:
+    required: true
+    type: object
+    default: {}   

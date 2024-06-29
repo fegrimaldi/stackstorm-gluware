@@ -1,0 +1,24 @@
+---
+name: "os_compliance_report"
+pack: "gluware"
+description: "Runs an OS Version compliance report at a give time."
+enabled: true
+trigger:
+  type: "core.st2.CronTimer"
+  parameters:
+    minute: "10"
+    hour: "19"
+    day: "*"
+criteria: {}
+action:
+  ref: "core.http"
+  parameters:
+    url: "https://{{ config.gluware.glu_base_url }}/api/workflows/6f5ac16b-559e-48ed-afa5-98f8af53e3fc/run"
+    method: "POST"
+    headers:
+      Content-Type: "application/json"
+    body: '{"orgId":{{ config.gluware.glu_org_id }},"inputParameters":{"siteCodeName":"GA010"}}'
+    auth:
+      username: "{{ config.gluware.glu_username }}"
+      password: "{{ config.gluware.glu_password }}"
+    verify_ssl_cert: false
