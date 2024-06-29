@@ -11,10 +11,10 @@ parameters:
     type: string
     default: ""
   device_id:
-    required: true
+    required: false
     type: string
     default: ""
   input_params:
-    required: true
+    required: false
     type: object
     default: {}   
