@@ -20,10 +20,10 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          url: <% result().url %>
-          username: <% result().username %>
-          password: <% result().password %>
-          org_id: <% result().org_id %>
+          url: <% ctx().get_url.url %>
+          username: <% ctx().get_url.username %>
+          password: <% ctx().get_url.password %>
+          org_id: <% ctx().get_url.org_id %>
         do: http_post
 
   http_post:
