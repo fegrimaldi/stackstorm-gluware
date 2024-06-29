@@ -7,7 +7,7 @@ trigger:
   type: "core.st2.CronTimer"
   parameters:
     minute: "30"
-    hour: "0"
+    hour: "01"
     day: "*"
 criteria: {}
 action:

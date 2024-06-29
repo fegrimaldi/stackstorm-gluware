@@ -9,7 +9,7 @@ input:
 
 vars:
   - site_codes: ["GA010", "CA050"]
-  - workflow_id: "6f5ac16b-559e-48ed-afa5-98f8af53e3fc"
+  - workflow_id: "749248da-518f-47be-9240-fa65ed379e0f"
   - device_ids: []
 
 output:
