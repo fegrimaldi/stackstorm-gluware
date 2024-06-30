@@ -9,15 +9,18 @@ parameters:
   workflow_id:
     required: true
     type: string
+    position: 1
     description: Gluware workflow ID (See workflow info in Gluware).
     default: ""
   device_ids:
     required: false
     type: array
+    position: 2
     description: An array of Gluware managed device IDs. 
     default: []
   input_params:
     required: false
     type: object
+    position: 3
     description: A dictionary of Gluware workflow input parameters.
     default: {}   
