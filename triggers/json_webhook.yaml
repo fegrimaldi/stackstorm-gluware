@@ -1,0 +1,9 @@
+---
+name: "json_webhook"
+pack: "gluware"
+description: "A webhook to receive JSON payloads."
+parameters:
+  url:
+    type: "string"
+    description: "The URL endpoint for the webhook."
+    required: true

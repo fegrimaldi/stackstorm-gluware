@@ -1,0 +1,12 @@
+---
+name: "json_webhook"
+pack: "gluware"
+description: "Rule to handle JSON payloads received via webhook."
+trigger:
+  type: "gluware.json_webhook"
+criteria: {}
+action:
+  ref: "gluware.save_json_to_disk"
+  parameters:
+    payload: "{{trigger.body}}"
+enabled: true
