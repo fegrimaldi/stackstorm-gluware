@@ -32,7 +32,7 @@ class UpdateCveSummary(action.BaseAction):
         devices = self.web_method.call(
             method="GET",
             url=f"{self.base_url}/api/devices",
-            params={"orgId": self.org_id},
+            params={"orgId": self.org_id, "discoveredVendor": "Cisco"},
             json=None,
             headers=None,
             auth=self.auth,
