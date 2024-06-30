@@ -13,4 +13,4 @@ parameters:
     type: "string"
     description: "The file path to save the JSON payload."
     required: true
-    default: "/tmp/webhook_payload.json"
+    default: "/opt/gluware/public/webhook_payload.json"

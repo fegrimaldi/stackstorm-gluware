@@ -48,8 +48,6 @@ Author:
     Fabricio Grimaldi
 """
 
-
-import sys
 from lib import action
 from lib.webmethod import WebMethod
 
@@ -57,7 +55,9 @@ from lib.webmethod import WebMethod
 class RunGluWorklflow(action.BaseAction):
     def run(self, **parameters):
         workflow_id = parameters["workflow_id"]
+
         self.web_method = WebMethod(verify=False)
+        
         response = self.web_method.call(
             method="POST",
             url=f"{self.base_url}/api/workflows/{workflow_id}/run",
@@ -74,9 +74,9 @@ class RunGluWorklflow(action.BaseAction):
                 "RunGluWorkFlow",
                 extra={"msg": f"WebMethod's call response: {response.status_code}"},
             )
-            return response.status_code
+            return True, response.status_code
         else:
             self.logger.error(
                 "RunGluWorkFlow", extra={"msg": "WebMethod's call response: None"}
             )
-            sys.exit(1)
+            return False, "WebMethod's call response: None"
