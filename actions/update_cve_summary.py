@@ -70,7 +70,7 @@ class UpdateCveSummary(action.BaseAction):
                     url=f"{self.base_url}/api/devices/{deviceId}",
                     data=json.dumps(cve_payload),
                     headers=headers,
-                    auth=self.glu_auth,
+                    auth=self.auth,
                 )
 
                 if response is not None:
