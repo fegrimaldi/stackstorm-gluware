@@ -3,7 +3,7 @@ name: "json_webhook"
 pack: "gluware"
 description: "Rule to handle JSON payloads received via webhook."
 trigger:
-  type: "core.st2.webhookk"
+  type: "core.st2.webhook"
 criteria: {}
 action:
   ref: "gluware.save_json_to_disk"
