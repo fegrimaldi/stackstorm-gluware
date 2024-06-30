@@ -31,11 +31,11 @@ class UpdateCveSummary(action.BaseAction):
         # * Get All Devices
         devices = self.web_method.call(
             method="GET",
-            url=f"{self.glu_base_url}/api/devices",
+            url=f"{self.base_url}/api/devices",
             params={"orgId": self.org_id},
             json=None,
             headers=None,
-            auth=self.glu_auth,
+            auth=self.auth,
         ).json()
 
         # * Loop Through all Devices
@@ -50,11 +50,11 @@ class UpdateCveSummary(action.BaseAction):
                 # * Get All Devices
                 device = self.web_method.call(
                     method="GET",
-                    url=f"{self.glu_base_url}/api/devices/{deviceId}",
+                    url=f"{self.base_url}/api/devices/{deviceId}",
                     params={"orgId": self.org_id},
                     json=None,
                     headers=None,
-                    auth=self.glu_auth,
+                    auth=self.auth,
                 ).json()
 
                 cve_payload = {"id": deviceId}
@@ -67,7 +67,7 @@ class UpdateCveSummary(action.BaseAction):
 
                 response = self.web_method.call(
                     method="PUT",
-                    url=f"{self.glu_base_url}/api/devices/{deviceId}",
+                    url=f"{self.base_url}/api/devices/{deviceId}",
                     data=json.dumps(cve_payload),
                     headers=headers,
                     auth=self.glu_auth,
