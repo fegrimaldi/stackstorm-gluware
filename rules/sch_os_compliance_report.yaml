@@ -1,7 +1,7 @@
 ---
-name: "os_compliance_report"
+name: "sch_os_compliance_report"
 pack: "gluware"
-description: "Runs an OS Version non-compliance report at a give time."
+description: "Schedules an OS Version non-compliance report using st2 cron."
 enabled: true
 trigger:
   type: "core.st2.CronTimer"
