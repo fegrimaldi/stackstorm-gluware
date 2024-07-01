@@ -28,4 +28,4 @@ action:
   description: Checks OSPF and BGP when a monitored interface goes down.
   parameters:
     device_name: "{{trigger.host}}"
-    workflow_id: "d81858bc-5ddb-470e-b67e-b81b70ccc39e"
+    workflow_id: "91006d70-c27d-4f6d-bfb2-427cf4f4dce7"
