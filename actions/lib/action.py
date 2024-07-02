@@ -40,12 +40,7 @@ class BaseAction(Action):
     def __init__(self, config):
         super(BaseAction, self).__init__(config)
 
-        self.logger = self._get_logger()
+        self.logger = logging.getLogger(__name__)
         self.auth = (self.config["username"], self.config["password"])
         self.base_url = self.config["base_url"]
         self.org_id = self.config["org_id"]
-
-
-    def _get_logger(self):
-        logger = logging.getLogger(__name__)  # Using __name__ ensures the logger is named after the module
-        return logger

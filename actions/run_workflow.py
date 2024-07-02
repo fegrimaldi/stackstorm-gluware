@@ -57,7 +57,7 @@ class RunGluWorklflow(action.BaseAction):
         workflow_id = parameters["workflow_id"]
 
         self.web_method = WebMethod(verify=False)
-        
+
         response = self.web_method.call(
             method="POST",
             url=f"{self.base_url}/api/workflows/{workflow_id}/run",
@@ -70,13 +70,8 @@ class RunGluWorklflow(action.BaseAction):
             auth=self.auth,
         )
         if response is not None:
-            self.logger.info(
-                "RunGluWorkFlow",
-                extra={"msg": f"WebMethod's call response: {response.status_code}"},
-            )
+            self.logger.info(f"WebMethod's call response: {response.status_code}")
             return True, response.status_code
         else:
-            self.logger.error(
-                "RunGluWorkFlow", extra={"msg": "WebMethod's call response: None"}
-            )
+            self.logger.error("WebMethod's call response: None")
             return False, "WebMethod's call response: None"
