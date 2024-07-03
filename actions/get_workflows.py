@@ -65,14 +65,18 @@ class GetGluWorkflows(action.BaseAction):
                 
                 try:
                     descr = workflow["description"]
+                    last_run = workflow["lastRun"]
                 except Exception:
                     descr = ""
-
+                if workflow["lastRun"]:
+                    last_run = js_timestamp_to_utc_string(workflow["lastRun"])
+                else:
+                    last_run = "Never"
                 result.append({
                     "name": workflow["name"],
                     "description": descr,
                     "id":  workflow["id"],
-                    "lastRun": js_timestamp_to_utc_string(workflow["lastRun"])
+                    "lastRun": last_run
                 }) 
             self.logger.info(
                 "GetGluWorkflows", extra={"result": result}

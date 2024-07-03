@@ -28,7 +28,7 @@ class UpdateCveSummary(action.BaseAction):
         headers = {"Content-Type": "application/json"}
         self.web_method = WebMethod(verify=False)
 
-        # * Get All Devices
+        # * Get All Cisco Devices
         devices = self.web_method.call(
             method="GET",
             url=f"{self.base_url}/api/devices",
@@ -38,52 +38,42 @@ class UpdateCveSummary(action.BaseAction):
             auth=self.auth,
         ).json()
 
-        # * Loop Through all Devices
-        for dev in devices:
-            deviceId = dev["id"]
-            if "discoveredSku" in dev.keys():
-                skuString = dev["discoveredSku"]
-            else:
-                skuString = "undiscovered"
-
-            if (dev["accessStatus"] != "UNKNOWN") & (skuString != "undiscovered"):
-                # * Get All Devices
-                device = self.web_method.call(
-                    method="GET",
-                    url=f"{self.base_url}/api/devices/{deviceId}",
-                    params={"orgId": self.org_id},
-                    json=None,
-                    headers=None,
-                    auth=self.auth,
-                ).json()
-
-                cve_payload = {"id": deviceId}
-                if "Medium Advisories" in device.keys():
-                    cve_payload["adv_med"] = device["Medium Advisories"]
-                if "High Advisories" in device.keys():
-                    cve_payload["adv_high"] = device["High Advisories"]
-                if "Critical Advisories" in device.keys():
-                    cve_payload["adv_crit"] = device["Critical Advisories"]
-
-                response = self.web_method.call(
-                    method="PUT",
-                    url=f"{self.base_url}/api/devices/{deviceId}",
-                    data=json.dumps(cve_payload),
-                    headers=headers,
-                    auth=self.auth,
-                )
-
-                if response is not None:
-                    self.logger.info(
-                        "UpdateCveSummary",
-                        extra={
-                            "msg": f"WebMethod's call response: {response.status_code}"
-                        },
-                    )
-                    # return response.status_code
+        try:
+            # * Loop Through and update all devices
+            for dev in devices: 
+                deviceId = dev["id"]
+                if "discoveredSku" in dev.keys():
+                    skuString = dev["discoveredSku"]
                 else:
-                    self.logger.error(
-                        "UpdateCveSummary",
-                        extra={"msg": "WebMethod's call response: None"},
+                    skuString = "undiscovered"
+
+                if (dev["accessStatus"] != "UNKNOWN") & (skuString != "undiscovered"):
+                    # * Get All Devices
+                    device = self.web_method.call(
+                        method="GET",
+                        url=f"{self.base_url}/api/devices/{deviceId}",
+                        params={"orgId": self.org_id},
+                        json=None,
+                        headers=None,
+                        auth=self.auth,
+                    ).json()
+
+                    cve_payload = {"id": deviceId}
+                    if "Medium Advisories" in device.keys():
+                        cve_payload["adv_med"] = device["Medium Advisories"]
+                    if "High Advisories" in device.keys():
+                        cve_payload["adv_high"] = device["High Advisories"]
+                    if "Critical Advisories" in device.keys():
+                        cve_payload["adv_crit"] = device["Critical Advisories"]
+
+                    response = self.web_method.call(
+                        method="PUT",
+                        url=f"{self.base_url}/api/devices/{deviceId}",
+                        data=json.dumps(cve_payload),
+                        headers=headers,
+                        auth=self.auth,
                     )
-                    # sys.exit(1)
+            return True, "Updated CVE Summaries"
+        except Exception as e:
+            self.logger.error(f"Error: {e}")
+            return False, f"Failed to update CVE Summaries - Error: {e}"

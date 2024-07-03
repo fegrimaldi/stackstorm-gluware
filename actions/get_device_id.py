@@ -64,12 +64,12 @@ class GetGluDeviceId(action.BaseAction):
         )
         if response is not None:
             devices = response.json()
-            self.logger.info(
-                "GetGluDeviceId", extra={parameters["device_name"]: devices[0]["id"]}
-            )
-            return devices[0]["id"]
+            if devices:
+                self.logger.info("Successfully retrieved device id")
+                return devices[0]["id"]
+            else:
+                self.logger.warning("Could not find device.")
+                return "Could not find device."
         else:
-            self.logger.error(
-                "GetGluDeviceId", extra={"msg": "WebMethod's call response was `None`"}
-            )
-            sys.exit(1)
+            self.logger.error("WebMethod's call response was `None`")
+            return False, "WebMethod's call response was `None`"
