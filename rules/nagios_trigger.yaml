@@ -24,8 +24,7 @@ criteria:
     pattern: HARD
     type: eq
 action:
-  ref: gluware.run_wf_by_device_name
+  ref: gluware.run_routing_nsa_workflow
   description: Checks OSPF and BGP when a monitored interface goes down.
   parameters:
     device_name: "{{trigger.host}}"
-    workflow_id: "91006d70-c27d-4f6d-bfb2-427cf4f4dce7"

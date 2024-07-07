@@ -1,0 +1,13 @@
+---
+name: run_routing_nsa_workflow
+pack: gluware
+description: Runs a [g]luware workflow assessing router state. 
+runner_type: orquesta
+entry_point: workflows/run_routing_nsa_workflow.yaml
+enabled: true
+parameters:
+  device_name:
+    required: true
+    type: string
+    description: The Gluware managed device's name.
+    default: ""

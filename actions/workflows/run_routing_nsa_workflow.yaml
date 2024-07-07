@@ -1,0 +1,30 @@
+version: 1.0
+
+description: Runs a [g]luware workflow assessing router state.
+
+input:
+  - device_name: string
+
+
+vars:
+  - device_ids: []
+  - input_params: {}
+  - workflow_id: "2808bab1-6107-48b3-88cf-cf84cd45db6f"
+
+
+output:
+  - wf_exec_status: <% ctx().wf_exec_status %>
+
+tasks:
+  task1:
+    action: gluware.run_workflow
+    input:
+      device_ids: <% ctx().device_ids %>
+      input_params: 
+        deviceName: <% ctx().device_name %>
+      workflow_id: <% ctx().workflow_id %>
+    next:
+      - when: <% succeeded() %>
+        publish: 
+         - wf_exec_status: <% result().result %>
+     
