@@ -1,7 +1,7 @@
 ---
 pack: gluware
 ref: gluware.nagios_trigger
-name: nagios_trigger
+name: run_routing_nsa
 uid: rule:gluware:nagios_trigger
 tags: []
 type:
@@ -25,6 +25,6 @@ criteria:
     type: eq
 action:
   ref: gluware.run_routing_nsa_workflow
-  description: Checks OSPF and BGP when a monitored interface goes down.
+  description: Checks OSPF and BGP and interfaces when a monitored interface goes down.
   parameters:
     device_name: "{{trigger.host}}"
