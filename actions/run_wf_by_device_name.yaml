@@ -9,10 +9,10 @@ parameters:
   device_name:
     required: true
     type: string
-    description: The Gluware managed device's name.
+    description: The [g]luware managed device's name.
     default: ""
   workflow_id:
     required: true
     type: string
-    description: The Gluware workflow's ID. (See workflow info in Gluware.)
+    description: The [g]luware workflow's ID (See workflow info in [g]luware control).
     default: ""

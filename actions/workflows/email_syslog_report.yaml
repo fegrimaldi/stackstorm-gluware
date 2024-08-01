@@ -1,0 +1,56 @@
+version: 1.0
+
+description: Runs a [g]luware device syslog query, formats results to csv, saves it to disk, then emails the report as an attachment.
+
+input:
+  - device_name: string
+
+vars:
+  - report: null
+
+output:
+  - result: <% ctx().result %>
+
+tasks:
+  run_qry:
+    action: mysql.select
+    input:
+      query: 'SELECT DeviceReportedTime, Facility, FromHost, SysLogTag, Message FROM SystemEvents WHERE FromHost = "<% ctx().device_name %>";'
+      connection: syslog
+    next:
+      - when: <% succeeded() %>
+        publish: 
+          - qry_results: <% result().result or [] %>
+        do: format_csv
+  format_csv:
+    action: csv.format
+    input:
+      data: <% ctx().qry_results %>
+    next:
+      - when: <% succeeded() %>
+        publish: 
+         - report: <% result().result %>
+        do: save_csv
+  save_csv:
+    action: gluware.save_csv_to_disk
+    input:
+      data: <% ctx().report %>
+      file_path: "/opt/gluware/public/syslog_report.csv"
+    next:
+      - when: <% succeeded() %>
+        publish: 
+         - attachment_path: <% result().result %>
+        do: email_csv
+  email_csv:
+    action: email.send_email
+    input:
+      account: outlook_smtp
+      email_from: "fegrimaldi@outlook.com"
+      email_to: ["fgrimaldi@gluware.com"]
+      subject: "Syslog Report: <% ctx().device_name %>"
+      message: "See attached report."
+      attachments: ["<% ctx().attachment_path %>"]
+    next:
+      - when: <% succeeded() %>
+        publish: 
+         - result: "success"       
