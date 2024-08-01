@@ -1,19 +1,19 @@
 username:
-  description: "Gluware username."
+  description: "[g]luware username."
   type: "string"
   required: true
 password:
-  description: "Gluware user password."
+  description: "[g]luware user password."
   type: "string"
   secret: true
   required: true
 base_url:
-  description: "Gluware Base url (https://glups01.gluware.lab)"
+  description: "[g]luware Base url (https://glups01.gluware.lab)"
   type: "string"
   secret: false
   required: true
 org_id:
-  description: "Gluware Org ID"
+  description: "[g]luware Org ID"
   type: "string"
   secret: false
   required: true  
