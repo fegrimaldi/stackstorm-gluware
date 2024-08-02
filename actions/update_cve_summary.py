@@ -1,20 +1,17 @@
-"""Updates the CVE summary for all devices in the Gluware platform.
+"""
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-This script provides a class `UpdateCveSummary` which inherits from `action.BaseAction`. 
-It enables users to update the CVE summary for all devices by retrieving device information,
-aggregating CVE advisories, and sending the updated information back to Gluware.
+       http://www.apache.org/licenses/LICENSE-2.0
 
-Attributes:
-    None
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 
-Methods:
-    run(**parameters): Executes the action to update the CVE summary for all devices.
-
-Version:
-    1.0
-
-Author: 
-    Fabricio E. Grimaldi
+   Copyright 2024 Silver Wolf Technology
 """
 
 import sys

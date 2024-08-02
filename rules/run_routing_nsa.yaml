@@ -1,8 +1,8 @@
 ---
 pack: gluware
-ref: gluware.nagios_trigger
+ref: gluware.run_routing_nsa
 name: run_routing_nsa
-uid: rule:gluware:nagios_trigger
+uid: rule:gluware:run_routing_nsa
 tags: []
 type:
   ref: standard

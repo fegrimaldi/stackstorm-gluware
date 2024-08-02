@@ -1,23 +1,18 @@
-"""Defines an action to retrieve Gluware workflows.
-
-This module provides a class `GetGluWorkflows` which inherits from `action.BaseAction`. 
-It enables users to retrieve Gluware workflows based on specified parameters and returns 
-information about each workflow,including its name, ID, and the last run timestamp 
-converted to UTC string format.
-
-Attributes:
-    None
-
-Methods:
-    run(**parameters): Executes the action to retrieve Gluware workflows.
-
-Version:
-    1.0
-
-Author: 
-    Fabricio Grimaldi
 """
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+   Copyright 2024 Silver Wolf Technology
+"""
 
 import sys
 from lib import action
@@ -38,7 +33,7 @@ def js_timestamp_to_utc_string(timestamp):
     """
     seconds = timestamp / 1000
     date_obj = datetime.fromtimestamp(seconds, timezone.utc)
-    utc_string = date_obj.strftime('%Y-%m-%d %H:%M:%S UTC')
+    utc_string = date_obj.strftime("%Y-%m-%d %H:%M:%S UTC")
     return utc_string
 
 
@@ -52,7 +47,7 @@ class GetGluWorkflows(action.BaseAction):
             params={
                 "orgId": self.org_id,
                 "workflowType": "PRODUCTION",
-                "private": False
+                "private": False,
             },
             json=None,
             headers=None,
@@ -62,7 +57,7 @@ class GetGluWorkflows(action.BaseAction):
             result = []
             workflows = response.json()
             for workflow in workflows:
-                
+
                 try:
                     descr = workflow["description"]
                     last_run = workflow["lastRun"]
@@ -72,18 +67,16 @@ class GetGluWorkflows(action.BaseAction):
                     last_run = js_timestamp_to_utc_string(workflow["lastRun"])
                 else:
                     last_run = "Never"
-                result.append({
-                    "name": workflow["name"],
-                    "description": descr,
-                    "id":  workflow["id"],
-                    "lastRun": last_run
-                }) 
-            self.logger.info(
-                "GetGluWorkflows", extra={"result": result}
-            )
+                result.append(
+                    {
+                        "name": workflow["name"],
+                        "description": descr,
+                        "id": workflow["id"],
+                        "lastRun": last_run,
+                    }
+                )
+            self.logger.info("Successfully retrieved all public [g]luware workflows.")
             return result
         else:
-            self.logger.error(
-                "GetGluWorkflows", extra={"msg": "WebMethod's call response was `None`"}
-            )
+            self.logger.error("faled to retrieve [g]luware workflows")
             sys.exit(1)
