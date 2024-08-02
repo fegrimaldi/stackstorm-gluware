@@ -18,7 +18,7 @@ import sys
 import requests
 from requests.exceptions import HTTPError, RequestException
 from urllib3.exceptions import InsecureRequestWarning
-
+from st2common import log as logging
 
 
 class WebMethod:
@@ -27,7 +27,7 @@ class WebMethod:
         if not verify:
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
         self.verify = verify
-
+        self.logger = logging.getLogger(__name__)
 
     def call(self, method, url, params=None, json=None, data=None, headers=None, auth=None):
         method = method.upper()

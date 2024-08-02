@@ -24,3 +24,4 @@ class BaseAction(Action):
         self.auth = (self.config["username"], self.config["password"])
         self.base_url = self.config["base_url"]
         self.org_id = self.config["org_id"]
+

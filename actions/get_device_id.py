@@ -37,7 +37,7 @@ class GetGluDeviceId(action.BaseAction):
         if response is not None:
             devices = response.json()
             if devices:
-                self.logger.info(f"Successfully retrieved device id.")
+                self.logger.info(f"Successfully retrieved device id: {devices[0]["id"]}")
                 return devices[0]["id"]
             else:
                 self.logger.warning("Could not find device.")
