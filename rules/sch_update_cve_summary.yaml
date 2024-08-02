@@ -1,0 +1,14 @@
+---
+name: "sch_update_cve_summary"
+pack: "gluware"
+description: "Updates [g]luware Cisco device CVE Summaries."
+enabled: true
+trigger:
+  type: "core.st2.CronTimer"
+  parameters:
+    minute: "00"
+    hour: "23"
+    day: "*"
+criteria: {}
+action:
+  ref: "gluware.update_cve_summary"
