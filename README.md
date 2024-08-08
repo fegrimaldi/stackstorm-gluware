@@ -20,7 +20,6 @@ To install the integration, follow these steps:
 
 1. Clone the repository:
 
-
 2. Install the required dependencies.
 
 3. Configure StackStorm and Gluware credentials in the provided configuration files.
@@ -38,4 +37,3 @@ Contributions to the project are welcome! Feel free to submit bug reports, featu
 ## License
 
 This project is licensed under the [Apache 2 License](LICENSE).
-

@@ -13,7 +13,7 @@ vars:
 
 
 output:
-  - api_response: <% ctx().wf_exec_status %>
+  - api_response: <% ctx().api_respone %>
 
 tasks:
   task1:

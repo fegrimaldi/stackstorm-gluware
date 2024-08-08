@@ -13,7 +13,7 @@ vars:
 
 
 output:
-  - wf_exec_status: <% ctx().wf_exec_status %>
+  - api_response: <% ctx().api_response %>
 
 tasks:
   task1:
@@ -26,5 +26,5 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish: 
-         - wf_exec_status: <% result().result %>
+         - api_response: <% result().result %>
      
