@@ -13,7 +13,7 @@ vars:
 
 
 output:
-  - api_response: <% ctx().api_respone %>
+  - api_response: <% ctx().api_response %>
 
 tasks:
   task1:
